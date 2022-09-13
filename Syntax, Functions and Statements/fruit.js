@@ -3,8 +3,9 @@ function fruit(type, weight, price){
     let result = weightInKG * price;
 
     
-    console.log(`I need ${result.toFixed(2)} to buy ${weightInKG.toFixed(2)} kilograms ${type}.`);
+    console.log(`I need $${result.toFixed(2)} to buy ${weightInKG.toFixed(2)} kilograms ${type}.`);
 
 }
 
 fruit('orange', 2500, 1.80);
+fruit('apple', 1563, 2.35);
