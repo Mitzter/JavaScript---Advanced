@@ -6,6 +6,8 @@ function cookingByNumbers(inputNum, ... commands){
    bake - multiply number by 3
    fillet - subtract 20% from the number
    */
+
+   
    //for (let i = 0; i < commands.length; i++){
    // inputNum = manipulator(inputNum, commands[i])
    //}
