@@ -2,7 +2,7 @@ function sameNumbers(num){
     let numAsString = num.toString(); //num + "" concatenation;
     let firstDigit = numAsString[0];
     let isSame = true;
-    let sum = 0;
+    let sum = Number(firstDigit);
 
     for (let i = 0; i < numAsString.length; i++){
         if(numAsString[i] !== firstDigit){
