@@ -32,4 +32,4 @@ function validityChecker(x1,x2,y1,y2){
 
 validityChecker(3, 0, 0, 4); // all valid
 console.log(`-------------------`)
-validityChecker(2, 1, 1, 1);
+validityChecker(2, 1, 1, 1); // first two invalid, last valid
