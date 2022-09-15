@@ -3,6 +3,7 @@ function solve(arr){
     //Create a new array form the second half of the input array
     // - if there are an odd number of elements, take the bigger half
     //Return the resulting array
+    
     arr.sort((a, b) => a - b);
     let middle = Math.floor(arr.length / 2);
     let result = arr.slice(middle);
