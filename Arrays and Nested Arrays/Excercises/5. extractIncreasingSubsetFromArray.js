@@ -30,7 +30,7 @@ function functionalExtractIncreasingSubset(arr){
     let biggestInteger = arr.shift();
 
     
-    res = arr.reduce((acc,currentElement) =>{
+    res = arr.reduce((acc,currentElement) => {
         if(biggestInteger <= currentElement){
             acc.push.currentElement;
             biggestInteger = currentElement;
