@@ -1,0 +1,68 @@
+// Write a JS function that adds and removes numbers to/from an array. 
+// You will receive a command which can either be "add" or "remove".
+
+//The initial number is 1. Each input command should increase that number, regardless of what it is.
+// Upon receiving an "add" command you should add the current number to your array.
+// Upon receiving the "remove" command you should remove the last entered number, currently existent in the array.
+
+//The input comes as an array of strings. Each element holds a command.
+//The output is the element of the array, each printed on a new line. In case of an empty array, just print "Empty"
+
+
+
+function addAndRemoveElements(arrOfCommands){
+    let res = [];
+    let num = 1;
+    for(let command of arrOfCommands){
+        switch(command){
+            case "add":
+                res.push(num);
+                num++;
+                break;
+            case "remove":
+                res.pop();
+                num++;
+                break;
+        }
+    }
+    if(res.length === 0){
+        console.log("Empty");
+    }else{
+        console.log(res.join("\n"));
+    }
+    
+
+    
+}
+
+//functional solution
+
+function functionalAddAndRemoveElements(arrOfCommands){
+    let res = [];
+    let num = 1;
+    arrOfCommands.forEach(command => {
+        command === "add" ? res.push(num) : res.pop();
+        num++;
+    })
+    return res.length === 0 ? "Empty" : res.join("\n");
+}
+
+addAndRemoveElements(['add',
+
+'add',
+
+'add',
+
+'add']);
+console.log("------------------------")
+addAndRemoveElements(['add', 'add', 'remove', 'add', 'add']);
+console.log("------------------------")
+console.log(functionalAddAndRemoveElements(['add',
+
+'add',
+
+'add',
+
+'add']))
+console.log("------------------------")
+console.log(functionalAddAndRemoveElements(['add', 'add', 'remove', 'add', 'add']))
