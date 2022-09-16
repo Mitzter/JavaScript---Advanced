@@ -23,21 +23,25 @@ function ticTacToe(input){
                       dashboard[i][1] === marker &&
                       dashboard[i][2] === marker){
                 console.log(`Player ${marker} wins!`)
+                printTable(dashboard);
                 return
             } else if (dashboard[0][i] === marker &&
                        dashboard[1][i] === marker &&
                        dashboard[2][i] === marker){
                 console.log(`Player ${marker} wins!`)
+                printTable(dashboard);
                 return
             } else if (dashboard[0][0] === marker &&
                        dashboard[1][1] === marker &&
                        dashboard[2][2] === marker){
                 console.log(`Player ${marker} wins!`)
+                printTable(dashboard);
                 return
             } else if (dashboard[0][2] === marker &&
                        dashboard[1][1] === marker &&
                        dashboard[2][0] === marker){
                 console.log(`Player ${marker} wins!`)
+                printTable(dashboard);
                 return
             }
         }
@@ -55,12 +59,15 @@ function ticTacToe(input){
         }
         if(!isFreeSpace){
             console.log("The game ended! Nobody wins :(");
+            printTable(dashboard);
             return;
         }
         isFirstPlayer = !isFirstPlayer;
+
+        function printTable(dashboard){
+            dashboard.forEach(row => console.log(row.join("\t")));
+        }
     }
-
-
 }
 
 ticTacToe([
