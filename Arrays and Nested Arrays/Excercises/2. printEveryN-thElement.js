@@ -4,9 +4,18 @@ function printEverytNthElement(arr,step){
         res.push(arr[i]);
     }
 
-    console.log(res);
+    return res;
 }
 
+
+//functional solution
+function printEveryNthElementFunctional(arr,step){
+    return arr.filter((el, i) => {
+        if(i % step === 0){
+            return el;
+        }
+    })
+}
 
 printEverytNthElement(['5',
 
