@@ -13,11 +13,25 @@ function sortArrayTwoCriteria(arr){
             return a.localeCompare(b);
         }
     })
-    console.log(sortArr.join("\n"));
+    return sortArr.join("\n");
 }
 
-sortArrayTwoCriteria(['alpha',
+function functionalSortArrayTwoCriteria(arr){
+    return arr.sort((a,b)=>{
+        a.length === b.length ?
+            a.length - b.length :
+            a.localeCompare(b);
+    }).join("\n");
+}
+console.log(sortArrayTwoCriteria(['alpha',
 
 'beta',
 
-'gamma'])
+'gamma']));
+
+console.log('--------');
+console.log(functionalSortArrayTwoCriteria(['alpha',
+
+'beta',
+
+'gamma']));
