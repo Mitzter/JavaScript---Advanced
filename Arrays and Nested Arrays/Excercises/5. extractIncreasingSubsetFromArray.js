@@ -25,9 +25,32 @@ function extractIncreasingSubset(arr){
 
 }
 
+function functionalExtractIncreasingSubset(arr){
+    let res = [];
+    let biggestInteger = arr.shift();
+
+    
+    res = arr.reduce((acc,currentElement) =>{
+        if(biggestInteger <= currentElement){
+            acc.push.currentElement;
+            biggestInteger = currentElement;
+        }
+        
+    },[])
+
+    return acc;
+}
 
 console.log(extractIncreasingSubset([1,3,8,4, 10, 12, 3, 2, 24]));
 console.log("-----------")
 console.log(extractIncreasingSubset([1,2,3,4]));
 console.log("-----------");
 console.log(extractIncreasingSubset([20,3,2,15]));
+
+console.log("-----------");
+
+console.log(functionalExtractIncreasingSubset([1,3,8,4, 10, 12, 3, 2, 24]));
+console.log("-----------")
+console.log(functionalExtractIncreasingSubset([1,2,3,4]));
+console.log("-----------");
+console.log(functionalExtractIncreasingSubset([20,3,2,15]));
