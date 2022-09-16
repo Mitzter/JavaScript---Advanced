@@ -27,18 +27,18 @@ function extractIncreasingSubset(arr){
 
 function functionalExtractIncreasingSubset(arr){
     let res = [];
-    let biggestInteger = arr.shift();
+    let biggestInteger = arr[0];
 
     
     res = arr.reduce((acc,currentElement) => {
         if(biggestInteger <= currentElement){
-            acc.push.currentElement;
+            acc.push(currentElement);
             biggestInteger = currentElement;
         }
-        
-    },[])
+        return acc;
+    },[]);
 
-    return acc;
+    return res;
 }
 
 console.log(extractIncreasingSubset([1,3,8,4, 10, 12, 3, 2, 24]));
