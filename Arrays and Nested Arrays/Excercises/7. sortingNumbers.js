@@ -5,7 +5,7 @@
 function sortNumbers(arr){
     let sortedArr = [];
     arr.sort((a,b) => a - b);
-    console.log(arr);
+    
     while(arr.length != 0){
         let smallNumber = arr.shift();
         let bigNumber = arr.pop();
@@ -13,8 +13,8 @@ function sortNumbers(arr){
         sortedArr.push(smallNumber);
         sortedArr.push(bigNumber);
     }
-    console.log(sortedArr);
+    return sortedArr;
     
 }
 
-sortNumbers([1, 65, 3, 52, 48, 63, 31, -3, 18, 56]);
+console.log(sortNumbers([1, 65, 3, 52, 48, 63, 31, -3, 18, 56]));
