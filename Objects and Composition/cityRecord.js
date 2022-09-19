@@ -1,9 +1,18 @@
 function solve(name, population,treasury){
-    return {
+    return{
         name,
         population,
-        treasury
+        treasury,
+        taxrate: 10,
+        collectTAXES(){
+            this.treasury += Math.floor(this.population * this.taxrate);
+        },
+        applyGrowth(percent){
+            this.population += Math.floor(this.population * percent / 100);
+        },
+        applyRecession(percent){
+            this.treasury -= Math.floor(this.treasury * percent / 100);
+        }
     };
 }
 
-console.log(solve("Sofia", 1500000, 20000000));
