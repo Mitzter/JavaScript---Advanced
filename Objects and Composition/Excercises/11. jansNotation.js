@@ -32,13 +32,13 @@ function jansNotation(arr){
         }
         let numbA = res.pop();
         let numbB = res.pop();
-        let result = operationEnum[el](numB, numA);
+        let result = operationEnum[el](numbB, numbA);
         res.push(result);
 
 
     }
 
-    console.log(res);
+    console.log(res.join());
 }
 
 jansNotation([3,4,'+']);
