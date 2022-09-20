@@ -19,7 +19,7 @@ function carFactory(data){
     let carriageCtor = {
         hatchback: function(color){
             return{
-                type: "hatchback",
+                type: "hatchback", 
                 color
             }
         },
@@ -33,13 +33,10 @@ function carFactory(data){
     
     result["carriage"] = carriageCtor[data.carriage](data.color);
 
-    let size;
-    if(data.wheelsize % 2 !== 0){
-        size = data.wheelsize
-    } else {
-        size = data.wheelsize - 1;
-    }
-    result.wheels = [size,size,size,size];
+    let size = data.wheelsize % 2 === 0 ? data.wheelsize - 1: data.wheelsize;
+
+    result.wheels = new Array(4).fill(size);
+    
     //console.table(result);
     return result;
     
