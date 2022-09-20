@@ -6,7 +6,7 @@ function lowestPricesInCities(data){
         price = Number(price);
 
         if(res.hasOwnProperty(product)){
-            let currentTown = res[product][town];
+            
             let currentPrice = res[product]["price"];
             if(currentPrice > price){
                 res[product] = {town, price}
