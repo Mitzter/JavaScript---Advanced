@@ -9,8 +9,8 @@
 function townsToJSON(input){
     let arr = input.slice(0, 1);
     arr = arr[0].split(' | ');
-    arr[0] = arr[0].slice(2);
-    arr[2] = arr[2].slice(0,9);
+    arr[0] = arr[0].slice(2); 
+    arr[2] = arr[2].slice(0,9); //This and the slice above are unnecessary, did so for testing purposes for later in the task.
     input.shift();
     
     let result = [];
