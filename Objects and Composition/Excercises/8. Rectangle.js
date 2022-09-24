@@ -7,14 +7,7 @@ function rectangle(width, heigth, color){
             return width * heigth;
         }
     }
-    console.log(rectangle.width);
-    console.log(rectangle.heigth);
-    console.log(rectangle.color);
-    console.log(rectangle.calcArea())
-
-    
-
-    
+    return rectangle
 }
 
 rectangle(4,5, 'red');
