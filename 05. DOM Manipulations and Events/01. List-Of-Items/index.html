@@ -24,7 +24,8 @@ Submit your solutions in the SoftUni judge system at https://judge.softuni.org/C
         <script>
             let list = document.getElementById('items');
             function addItem(){
-                let newItemValue = document.getElementById('newItemText').value;
+                let input = document.getElementById('newItemText');
+                let newItemValue = input.value;
 
                 let liItem = document.createElement('li');
 
@@ -35,6 +36,6 @@ Submit your solutions in the SoftUni judge system at https://judge.softuni.org/C
         </script>
     </main>
 </body>
-<script src="./app.js"></script>
+<!-- <script src="./app.js"></script> -->
 
 </html>
