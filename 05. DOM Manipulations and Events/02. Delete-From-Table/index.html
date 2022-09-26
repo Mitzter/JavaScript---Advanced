@@ -43,8 +43,29 @@ Submit your solutions in the SoftUni judge system at https://judge.softuni.org/C
         Email: <input type="text" name="email" />
         <button onclick="deleteByEmail()">Delete</button>
     </label>
+    
     <div id="result"></div>
-    <script src="./app.js"></script>
+    <script>
+        function deleteByEmail(){
+            let email = document.getElementsByName('email')[0].value.trim();
+
+            let tableCells = document
+                .querySelectorAll('#customers td:nth-child(2)');
+            
+            let found = false;
+            for(let cell of tableCells){
+                if(cell.textContent === email ){
+                    cell.parentElement.remove();
+                    found = true;
+                }
+            }
+
+            let result = document.getElementById('result');
+
+            result.textContent = found ? 'Deleted.' : 'Not found.';
+        }
+    </script>
+    <!-- <script src="./app.js"></script> -->
 </body>
 
 </html>
