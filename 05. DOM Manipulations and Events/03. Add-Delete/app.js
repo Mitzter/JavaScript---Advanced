@@ -2,7 +2,7 @@ function addItem() {
     let ul = document.getElementById('items');
 
     let input = document.getElementById('newText')
-    let value = input.value + ' ';
+    let values = input + ' ';
 
     let li = document.createElement('li');
 
