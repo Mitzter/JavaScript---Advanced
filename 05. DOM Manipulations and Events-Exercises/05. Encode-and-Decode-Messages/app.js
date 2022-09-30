@@ -10,7 +10,12 @@ function encodeAndDecodeMessages() {
 
         for(let i = 0; i < currentText.length; i++){
             let currentCh = currentText[i].charCodeAt();
-            newMsg += String.fromCharCode(currentCh + 1);
+            if(currentCh === 32){
+                newMsg += ' ';
+            }else{
+                newMsg += String.fromCharCode(currentCh + 3);
+            }
+            
         }
         let textAreas = document.querySelectorAll("textarea");
         let resultTextArea = textAreas[1];
@@ -24,8 +29,14 @@ function encodeAndDecodeMessages() {
         let currentText = currentArea.value;
         let resultMsg = "";
         for(let i = 0; i < currentText.length; i++){
-            let ch = currentText[i].charCodeAt();
-            resultMsg += String.fromCharCode(ch - 1);
+            let currentCh = currentText[i].charCodeAt();
+            if(currentCh === 32){
+                resultMsg += ' ';
+            }else{
+                resultMsg += String.fromCharCode(currentCh - 3);
+            }
+            
+            
         }
 
         currentArea.value = resultMsg;
