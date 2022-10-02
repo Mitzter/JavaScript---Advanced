@@ -11,6 +11,9 @@ function create(words) {
    }
    
    function showP(event){
+      if(event.target.nodeName === "P"){
+         return
+      }
       let p = event.target.children[0]
       p.style.display = "block";
    }
