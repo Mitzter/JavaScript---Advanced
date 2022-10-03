@@ -18,12 +18,12 @@ function createCard(face, suit){
     }
 
     return {
-        face: '',
-        suit: '',
-        toString(){
+        face: face,
+        suit: suit,
+        toString() {
             return this.face + this.suit;
         }
-    }
+    };
 }
 
 console.log(createCard('10', 'S').toString());
