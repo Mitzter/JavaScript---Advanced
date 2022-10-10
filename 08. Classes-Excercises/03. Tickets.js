@@ -23,7 +23,7 @@ function solve(arr, sortCriteria){
         let ticketDestination = currentTicket[0];
         let ticketPrice = currentTicket[1];
         let ticketStatus = currentTicket[2];
-a
+
         let ticket = new Ticket(ticketDestination, ticketPrice, ticketStatus);
         ticketStorage.push(ticket);
 
