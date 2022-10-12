@@ -14,12 +14,27 @@ class Hex {
         let hexString = decimalValue.toString(16);
         return `0x` + hexString.toUpperCase();
     }
-    plus({number}){
+    plus(number){
+        
         this.value += number;
         let hexString = this.value.toString(16);
         return `0x` + hexString.toUpperCase();
     }
 
+    minus(number){
+        if(number > this.value){
+            this.value = number - this.value;
+        }else{
+            this.value -= number;
+        }
+        
+        let hexString = this.value.toString(16);
+        return `0x` + hexString.toUpperCase();
+    }
+
+    parse({string}){
+
+    }
 
 }
 
@@ -30,4 +45,8 @@ console.log(hex.valueOf());
 
 console.log(hex.toString());
 
-console
+let a = new Hex(10);
+let b = new Hex(5);
+let c = new Hex(155);
+console.log(a.minus(c).toString());
+console.log(a.plus(c).toString());
