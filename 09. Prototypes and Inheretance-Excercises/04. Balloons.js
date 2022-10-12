@@ -15,8 +15,8 @@
             this.ribbonColor = ribbonColor;
             this.ribbonLength = ribbonLength;
             this._ribbon = {
-                ribbonColor,
-                ribbonLength
+                color: ribbonColor,
+                length: ribbonLength
             }
 
         }
@@ -29,11 +29,11 @@
     class BirthdayBallon extends PartyBalloon {
         constructor(color,hasWeight,ribbonColor,ribbonLength,text){
             super(color,hasWeight,ribbonColor,ribbonLength);
-            this.text = text;
+            this._text = text;
         }
 
         get text(){
-            return this.text;
+            return this._text;
         }
     }
 
