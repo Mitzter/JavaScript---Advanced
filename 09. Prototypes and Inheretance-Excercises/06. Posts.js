@@ -74,7 +74,7 @@ function solution(){
 
 const classes = solution();
 
-let post = new classes.Post("TestTitle", "TestContent");
+let post = new classes.Post("TestTitle", "TestContent"); 
 
 console.log(post.toString());
 
