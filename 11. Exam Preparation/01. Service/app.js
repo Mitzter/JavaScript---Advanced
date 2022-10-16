@@ -1,6 +1,6 @@
 window.addEventListener("load", solve);
 
-function solve(){
+/* function solve(){
     document.querySelector("button[type='submit]").addEventListener("click", createTask);
 
     let productType = document.getElementById("type-product");
@@ -83,4 +83,9 @@ function solve(){
 
         Array.from(containers).forEach(container => container.remove());
     }
+} */
+
+
+function solve(){
+    
 }
