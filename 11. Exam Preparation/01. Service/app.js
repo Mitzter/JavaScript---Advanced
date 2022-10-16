@@ -25,7 +25,7 @@ function solve(){
         description.value = "";
         name.value = "";
         phone.value = "";
-
+ 
         createOrder(typeValue, descriptionValue,nameValue, phoneValue)
 
         
