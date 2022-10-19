@@ -87,5 +87,85 @@ window.addEventListener("load", solve);
 
 
 function solve(){
+    document.querySelector("button[type='submit']").addEventListener("click", createTask);
+
+    let type = document.getElementById("product-type");
+    let description = document.getElementById("description");
+    let client = document.getElementById("client-name");
+    let phone = document.getElementById("client-phone");
+    let orders = document.getElementById("received-orders");
+    let finishSection = document.getElementById("completed-orders");
+    let clearBtn = finishSection.querySelector("button");
+    clearBtn.addEventListener("click", clearTask);
+
+    function createTask(){
+        let typeValue = type.value;
+        let descriptionValue = description.value;
+        let clientValue = client.value;
+        let phoneValue = phone.value;
+
+        if(!descriptionValue || !clientValue || ! phoneValue){
+            return;
+        }
+
+        description.value = "";
+        phone.value = "";
+        client.value = "";
+
+        createOrder(typeValue, descriptionValue, clientValue, phoneValue);
+    }
+
+    function createOrder(typeValue, descriptionValue, clientValue, phoneValue){
+        let divContainer = document.createElement("div");
+        divContainer.classList.add("container");
+
+        let h2 = document.createElement("h2");
+        h2.textContent = `Product type for repair: ${typeValue}`;
+
+        let h3 = document.createElement("h3");
+        h3.textContent = `Client information: ${clientValue}, ${phoneValue}`;
+
+        let h4 = document.createElement("h4");
+        h4.textContent = `Description of the problem: ${descriptionValue}`;
+
+        let startBtn = document.createElement("button");
+        startBtn.classList.add("start-btn");
+        startBtn.textContent = `Start repair`;
+        startBtn.addEventListener('click', repair);
+
+        let finishBtn = document.createElement("button");
+        finishBtn.classList.add("finish-btn");
+        finishBtn.textContent = `Finish repair`;
+        finishBtn.setAttribute("disabled", true);
+        finishBtn.addEventListener('click', finishRepair);
+
+        divContainer.appendChild(h2);
+        divContainer.appendChild(h3);
+        divContainer.appendChild(h4);
+        divContainer.appendChild(startBtn);
+        divContainer.appendChild(finishBtn);
+        orders.appendChild(divContainer);
+    }
+
+    function repair(e){
+        e.target.setAttribute("disabled", true);
+        let finishBtn = e.target.parentElement.getElementByClassName("finish-btn")[0];
+        finishBtn.disabled = false;
+    }
+
+    function finishRepair(e){
+        let divContainer = e.target.parentElement;
+        finishSection.appendChild(divContainer);
+        let btns = divContainer.querySelectorAll("button");
+        btns[0].remove();
+        btns[1].remove();
+    }
+
+    function clearTask(e){
+        let containers = finishSection.querySelectorAll(".container");
+
+        Array.from(containers).forEach(container => container.remove());
+    }
+
     
 }
