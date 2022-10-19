@@ -22,7 +22,7 @@ function solve() {
         let emailV = eMail.value;
         let birthV = birth.value;
         let positionV = position.value;
-        let salaryV = salary.value;
+        let salaryV = Number(salary.value);
 
         if(!fNameV || !lNameV || !emailV || !birthV || !positionV || !salaryV){
             return;
@@ -53,7 +53,7 @@ function solve() {
         let tdPV = document.createElement("td");
         tdPV.innerText =  positionV;
         let tdSV = document.createElement("td");
-        tdSV.innerText =  salaryV;
+        tdSV.innerText =  Number(salaryV).toFixed(2);
 
         const btnEdit = document.createElement("button");
         btnEdit.classList.add("edit");
@@ -97,8 +97,8 @@ function solve() {
         
         budget += salaryV;
         
-        
-        toPay.innerText = Number(budget);
+        toPay.innerText = "0.00";
+        toPay.innerText = Number(budget).toFixed(2);
         
     }
 
@@ -116,14 +116,16 @@ function solve() {
             eMail.value = emailV;
             birth.value = birthV;
             position.value = positionV;
-            salary.value = salaryV;
+            salary.value = Number(salaryV);
 
             budget -= salaryV;
 
             if(budget === 0){
+
                 toPay.innerText = "0.00";
             } else {
-                toPay.innerText = Number(budget);
+                toPay.innerText = "0.00";
+                toPay.innerText = Number(budget).toFixed(2);
             }
             
             
@@ -144,9 +146,10 @@ function solve() {
             if(budget === 0){
                 toPay.innerText = "0.00";
             } else {
-                toPay.innerText = Number(budget);
+                toPay.innerText = "0.00";
+                toPay.innerText = Number(budget).toFixed(2);
             }
 
     }
-    debugger
+   
 }
