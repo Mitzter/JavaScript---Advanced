@@ -3,15 +3,22 @@ class CarDealership {
         this.name = name;
         this.availableCars = [];
         this.soldCars = [];
-        this.totalIncome = 0;
+        this.totalIncome = Number(0);
     }
+    
     
 
     addCar(model, horsepower, price,mileage){
         if(!model || horsepower < 0 || price < 0 || mileage < 0){
             throw new Error('Invalid input!');
         }
-        let car = new Car(model,horsepower,price,mileage);
+
+        let car = {
+            model: model,
+            horsepower: horsepower,
+            price: Number(price).toFixed(2),
+            mileage: Number(mileage).toFixed(2)
+        }
         this.availableCars.push(car);
 
         return `New car added: ${model} - ${horsepower} HP - ${mileage.toFixed(2)} km - ${price.toFixed(2)}$`;
@@ -20,32 +27,43 @@ class CarDealership {
     sellCar(model, desiredMileage){
         let car = this.availableCars.find(x => x.model === model);
         const index = this.availableCars.indexOf(car);
+        let soldCar = {
+            model: car.model,
+            horsepower: car.horsepower,
+            soldPrice: 0
+        }
         if(!car){
             throw new Error(`${model} was not found!`);
         } else {
             let carMileage = car.mileage;
             let mileageDifference = carMileage - desiredMileage;
             
+            let carPrice = Number(car.price);
+            
             if(carMileage <= desiredMileage){
-                let soldCar = new SoldCar(car.model, car.horsepower, car.price);
+                soldCar.soldPrice = carPrice;
                 this.availableCars.splice(index, 1);
-                this.totalIncome += car.price;
+                let currentIncome = Number(this.totalIncome);
+                currentIncome = Number(currentIncome) + Number(carPrice).toFixed(2);
+                this.totalIncome = parseFloat(currentIncome);
                 this.soldCars.push(soldCar);
-                return `${car.model} was sold for ${car.price}$`
+                return `${car.model} was sold for ${carPrice}$`
             } else if (mileageDifference <= 40000){
-                car.price = car.price - (car.price * 0.05);
-                let soldCar = new SoldCar(car.model, car.horsepower, car.price);
+                soldCar.soldPrice = carPrice - (carPrice * 0.05);
                 this.availableCars.splice(index, 1);
-                this.totalIncome += car.price;
+                let currentIncome = Number(this.totalIncome);
+                currentIncome += Number(carPrice).toFixed(2);
+                this.totalIncome = parseFloat(currentIncome);
                 this.soldCars.push(soldCar);
-                return `${car.model} was sold for ${car.price}$`
+                return `${car.model} was sold for ${carPrice}$`
             } else if (mileageDifference > 40000){
-                car.price = car.price - (car.price * 0.1);
-                let soldCar = new SoldCar(car.model, car.horsepower, car.price);
+                soldCar.soldPrice = carPrice - (carPrice * 0.1);
                 this.availableCars.splice(index, 1);
-                this.totalIncome += car.price;
+                let currentIncome = Number(this.totalIncome);
+                currentIncome += Number(carPrice).toFixed(2);
+                this.totalIncome = parseFloat(currentIncome);
                 this.soldCars.push(soldCar);
-                return `${car.model} was sold for ${car.price}$`
+                return `${car.model} was sold for ${carPrice}$`
             }
         }
     }
@@ -71,7 +89,7 @@ class CarDealership {
         
 
         return stringBuilder;
-    }
+    };
 
     salesReport(criteria){
         
@@ -92,32 +110,21 @@ class CarDealership {
         stringBuilder += `-${this.soldCars.length} cars sold:\n`;
 
         for(let i = 0; i < this.soldCars.length; i++){
-            if(i === this.soldCars.length -){
+            if(i === this.soldCars.length){
                 stringBuilder += `---${this.soldCars[i].model} - ${this.soldCars[i].horsepower} HP - ${this.soldCars[i].soldPrice}$`;
             }
             stringBuilder += `---${this.soldCars[i].model} - ${this.soldCars[i].horsepower} HP - ${this.soldCars[i].soldPrice}$\n`;
         }
 
         return stringBuilder;
-    }
+    
+    };
 }
 
-class Car {
-    constructor(model, horsepower, price, mileage){
-        this.model = model;
-        this.horsepower = horsepower;
-        this.price = price;
-        this.mileage = mileage;
-    }
-}
 
-class SoldCar {
-    constructor(model, horsepower, soldPrice){
-        this.model = model;
-        this.horsepower = horsepower;
-        this.soldPrice = soldPrice;
-    }
-}
+
+
+
 
 let dealership = new CarDealership('SoftAuto');
 dealership.addCar('Toyota Corolla', 100, 3500, 190000);
