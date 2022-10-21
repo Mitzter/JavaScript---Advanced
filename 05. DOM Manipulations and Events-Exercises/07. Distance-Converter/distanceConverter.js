@@ -19,7 +19,7 @@ function attachEventsListeners() {
         in: 0.0254
     }
 
-    function convert(ev){
+    function convert(){
         let inputValue = input.value;
         let inputUnitsValue = inputUnits.value;
         let outputUnitsValue = outputUnits.value;
