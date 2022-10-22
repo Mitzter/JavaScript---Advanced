@@ -11,6 +11,7 @@ function solve() {
    const firstH1 = document.getElementsByTagName('h1')[0];
    const firstForm = document.getElementsByTagName('form')[0];
    const formWrapper = document.getElementsByClassName('form-wrapper')[0];
+   
 
    const previewList = document.getElementById('preview-list');
 
@@ -145,12 +146,15 @@ function solve() {
       firstH1.remove();
       firstForm.remove();
       formWrapper.remove();
+
       div.appendChild(h1);
-      
+           div.remove();
+           body.appendChild(div);
    }
 
    function deleteArticle(ev){
       ev.target.parentNode.remove();
       document.querySelector('#form-btn').disabled = false;
    }
+  
 }
