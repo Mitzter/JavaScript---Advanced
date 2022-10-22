@@ -8,7 +8,9 @@ function solve() {
    const genre = document.getElementById('genre');
    const story = document.getElementById('story');
    const body = document.getElementsByClassName('body')[0];
-   
+   const firstH1 = document.getElementsByTagName('h1')[0];
+   const firstForm = document.getElementsByTagName('form')[0];
+   const formWrapper = document.getElementsByClassName('form-wrapper')[0];
 
    const previewList = document.getElementById('preview-list');
 
@@ -140,8 +142,11 @@ function solve() {
       ev.target.parentNode.parentNode.parentNode.remove();
       let h1 = document.createElement('h1');
       h1.innerText = "Your scary story is saved!";
-
+      firstH1.remove();
+      firstForm.remove();
+      formWrapper.remove();
       div.appendChild(h1);
+      
    }
 
    function deleteArticle(ev){
