@@ -1,3 +1,24 @@
-function getInfo() {
-    console.log("TODO...");
+async function getInfo() {
+
+    const stopInfoElement = document.getElementById("stopId");
+    const stopId = stopInfoElement.ariaValueMax;
+    const url = `http://localhost:3030/jsonstore/bus/businfo/${stopId}`;
+    const stopNameElement = document.getElementById("stopName");
+    const busList = document.getElementById("buses");
+    busList.innerHTML = "";
+    
+    try{
+    const response = await fetch(url);
+    const data = await response.json();
+
+    stopNameElement.textContent = data.name;
+    Object.entries(data.buses).forEach(([bus, time]) => {
+        const li = document.createElement("li");
+        li.textContent = `Bus ${busId} arrives in ${time} minutes`;
+        busList.appendChild(li);
+    })
+    } catch (error) {
+        stopNameElement.textContent = "Error";
+    }
+
 }
