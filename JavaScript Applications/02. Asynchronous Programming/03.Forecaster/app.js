@@ -15,12 +15,13 @@ async function getWeather(){
     const townName = document.getElementById("location").value;
     try{
         const response = await fetch(url);
-    const data = await response.json();
+        const data = await response.json();
 
-    const info = data.find(x => x.name === townName);
+        const info = data.find(x => x.name === townName);
 
-    createForecaster(info.code);
+        createForecaster(info.code);
     } catch {
+        forecastContainer.style.display = "block";
         forecastContainer.textContent = "Error";
     }
     
@@ -35,19 +36,25 @@ async function createForecaster(code){
     const urlUpcoming = `http://localhost:3030/jsonstore/forecaster/upcoming/${code}`;
 
     try {
-    const responseToday = await fetch(urlToday);
-    const dataToday = await responseToday.json();
 
-    const responseUpcoming = await fetch(urlUpcoming);
-    const dataUpcoming = await responseUpcoming.json();
+        const [responseToday, responseUpcoming] = Promise.all([
+            fetch(urlToday),
+            fetch(urlUpcoming)
+        ])
+        
+        const dataToday = await responseToday.json();
 
-    forecastContainer.style.display = "block";
-    const todayHtmlTemp = createToday(dataToday);
-    currentSection.appendChild(todayHtmlTemp);
+        
+        const dataUpcoming = await responseUpcoming.json();
 
-    const upcomingHTMLTemp = createUpcoming(dataUpcoming);
-    upcomingContainer.appendChild(upcomingHTMLTemp);
+        forecastContainer.style.display = "block";
+        const todayHtmlTemp = createToday(dataToday);
+        currentSection.appendChild(todayHtmlTemp);
+
+        const upcomingHTMLTemp = createUpcoming(dataUpcoming);
+        upcomingContainer.appendChild(upcomingHTMLTemp);
     } catch {
+        forecastContainer.style.display = "block";
         forecastContainer.textContent = "Error";
     }
     
@@ -85,7 +92,9 @@ function generateSpans(data){
 
     spanHolder.appendChild(iconSpan);
     spanHolder.appendChild(tempSpan);
-    spanHolder.appendChild(conditionSpan)
+    spanHolder.appendChild(conditionSpan);
+
+    return spanHolder;
 }
 
 function createToday(data){
