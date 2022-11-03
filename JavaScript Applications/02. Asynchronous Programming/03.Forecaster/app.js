@@ -51,7 +51,7 @@ async function createForecaster(code){
         const todayHtmlTemp = createToday(dataToday);
         currentSection.appendChild(todayHtmlTemp);
 
-        const upcomingHTMLTemp = createUpcoming(dataUpcoming);
+        const upcomingHTMLTemp = createUpcoming(dataUpcoming); 
         upcomingContainer.appendChild(upcomingHTMLTemp);
     } catch {
         forecastContainer.style.display = "block";
