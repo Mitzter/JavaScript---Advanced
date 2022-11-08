@@ -26,7 +26,7 @@ function topicTemplate(data) {
     container.innerHTML = `
     <div class="topic-name-wrapper">
         <div class="topic-name">
-            <a href="#" class="normal">
+            <a href="#" class="normal"  id="${data._id}">
                 <h2>${data.topicName}</h2>
             </a>
             <div class="columns">
@@ -48,7 +48,7 @@ function topicTemplate(data) {
 }
 
 function onSubmit(e) {
-    //e.preventDefault();
+    e.preventDefault();
 
     if (e.submitter.innerHTML === "Cancel") {
         clearForm();
