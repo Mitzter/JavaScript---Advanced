@@ -1,22 +1,33 @@
-const username = `Peter`;
+import { render } from "./template.js";
 
+const username = `Peter`;
+const items = [
+    'Product 1',
+    `Product 2`,
+    `Product 3`,
+];
+const ctx = {
+    username,
+    items
+}
 const views = {
-    'home-link': `<h2>Home Page</h2><p>Welcome, %%username%%</p>`,
-    'catalog-link': `<h2>Catalog Page</h2>`,
-    'about-link': `<h2>About Page</h2>`
+    'home-link': `home`,
+    'catalog-link': `catalog`,
+    'about-link': `about`
 }
 
-document.querySelector('nav').addEventListener('click', (event) => {
-    if(event.target.targName =='A'){
+
+
+document.querySelector('nav').addEventListener('click', async (event) => {
+    debugger
+    if(event.target.tagName == 'A'){
         const view = views[event.target.id];
         if(view !== undefined){
-            render(view);
+            document.querySelector('main').innerHTML = await render(view, ctx);
         }
     }
 })
 
 
-function render(html){
-    const result = html.replace('%%username%%', username);
-    document.querySelector('main').innerHTML = result;
-}
+
+

@@ -1,1 +1,3 @@
 document.querySelector(`[data-id=${id}]`); //select element in server by its id
+
+install lit-html - npm i lit-html
