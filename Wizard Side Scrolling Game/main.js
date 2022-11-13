@@ -4,11 +4,22 @@ const gameOver = document.querySelector('.game-over');
 const gameScore = document.querySelector('.game-score');
 const gamePoints = gameScore.querySelector('.points');
 
+const audioObj = new Audio("./sounds/soundtrack.mp3");
+audioObj.volume = 0.3;
+const bugDeathSound = new Audio('./sounds/bugDeathSound.mp3');
+const fireballSound = new Audio('./sounds/brrshh.mp3');
+const flyingSound = document.createElement('audio');
+flyingSound.setAttribute('src', './sounds/flyingSound.mp3');
+flyingSound.setAttribute('autoplay', 'autoplay');
+flyingSound.playbackRate=2.0;
+flyingSound.volume = 1;
+
+
 gameStart.addEventListener('click', onGameStart);
 
 function onGameStart(){
     gameStart.classList.add('hide');
-
+    audioObj.play();
     window.requestAnimationFrame(gameAction);
 
     player.width = wizard.offsetWidth;
@@ -35,7 +46,7 @@ let game = {
     speed: 2,
     movingMultiplier: 4,
     fireBallMultiplier: 5,
-    fireInterval: 1000,
+    fireInterval: 500,
     cloudSpawnInterval: 3000,
     bugSpawnInterval: 1000,
     bugKillBonus: 2000
@@ -70,21 +81,27 @@ function gameAction(timestamp){
 
     if(keys.ArrowUp && player.y > 0){
         player.y -= game.speed * game.movingMultiplier;
+        flyingSound.play();
     }
     if(keys.ArrowDown && isInAir){
         player.y += game.speed * game.movingMultiplier;
+        flyingSound.play();
     }
     if(keys.ArrowLeft && player.x > 0){
         player.x -= game.speed * game.movingMultiplier;
+        flyingSound.play();
     }
     if(keys.ArrowRight && player.x + player.width < gameArea.offsetWidth){   
         player.x += game.speed * game.movingMultiplier;
+        flyingSound.play();
     }
     if(keys.Space && timestamp - player.lastTimeFiredFireball > game.fireInterval){
         wizard.classList.add('wizard-fire');
         addFireBall(player);
+        
         player.lastTimeFiredFireball = timestamp;
     } else {
+        
         wizard.classList.remove('wizard-fire');
     }
 
@@ -149,6 +166,7 @@ function gameAction(timestamp){
             if(isCollision(fireBall, bug)){
                 scene.score += game.bugKillBonus;
                 bug.parentElement.removeChild(bug);
+                bugDeathSound.cloneNode(true).play();
                 fireBall.parentElement.removeChild(fireBall);
             }
         })
@@ -166,7 +184,7 @@ function gameAction(timestamp){
 
 function addFireBall() {
     let fireBall = document.createElement('div');
-
+    fireballSound.cloneNode(true).play();
     fireBall.classList.add('fire-ball');
     fireBall.style.top = (player.y + player.height / 3 - 5) + 'px';
     fireBall.x = player.x + player.width;
