@@ -5,6 +5,8 @@ const townsRoot = document.getElementById("towns");
 const resultRoot = document.getElementById("result");
 document.querySelector("button").addEventListener("click", search)
 
+update()
+
 function searchTemplate(townsName, match) {
    const ul = html`
       <ul>
@@ -21,9 +23,9 @@ function createLiTemplate(town, match){
    `
 }
 
-function update(){
-   const ul = searchTemplate(towns);
-   render(ul, townsName)
+function update(text){
+   const ul = searchTemplate(towns, text);
+   render(ul, townsRoot)
 }
 
 function search(){
