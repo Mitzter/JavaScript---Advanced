@@ -25,5 +25,8 @@
     "playwright": "^1.27.1",
     "playwright-chromium": "^1.27.1"
   },
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "lit-html": "^2.4.0"
+  }
 }
