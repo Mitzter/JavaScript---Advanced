@@ -1,9 +1,9 @@
 
 
 const views = {
-    '/http://127.0.0.1:5500/JavaScript%20Applications/07.%20Routing/demo/':() => '<h2>Home Page</h2>',
-    'http://127.0.0.1:5500/JavaScript%20Applications/07.%20Routing/demo/catalog':() =>  '<h2>Catalog</h2>',
-    'http://127.0.0.1:5500/JavaScript%20Applications/07.%20Routing/demo/about':() =>  '<h2>About Page</h2>'
+    '/':() => '<h2>Home Page</h2>',
+    '/catalog':() =>  '<h2>Catalog</h2>',
+    '/about':() =>  '<h2>About Page</h2>'
 }
 
 const main = document.querySelector('main');
