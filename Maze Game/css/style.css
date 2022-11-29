@@ -1,0 +1,40 @@
+body {
+    font-family: Calibri;
+    transition: 0.2s ease;
+    text-align: center;
+}
+
+body.success {
+    background-color: #b7f0b7;
+    transition: 0.2s ease;
+}
+
+.game-container {
+    margin: 0px auto;
+}
+
+#map-and-controls {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    margin: 10px 0px;
+    padding: 0px;
+}
+
+.game-map {
+    position: relative;
+    margin: 0px auto;
+}
+
+div.layer,
+div.layer div {
+    position: absolute;
+}
+
+#tiles div {
+    border: 1px solid grey;
+  }
+
+  
