@@ -4,6 +4,7 @@ import { showCatalog } from './views/catalog.js';
 import { showCreate } from './views/create.js';
 import { showDetails } from './views/details.js';
 import { showEdit } from './views/edit.js';
+import { showHome } from './views/home.js';
 import { showLogin } from './views/login.js';
 import { updateNav } from './views/nav.js';
 import { showProfile } from './views/profile.js';
@@ -12,7 +13,7 @@ import { showRegister } from './views/register.js';
 const main = document.getElementById('content');
 
 page(decorateContext)
-
+page('/', showHome);
 page('/catalog', showCatalog);
 page('/catalog/:id', showDetails);
 page('/edit/:id', showEdit);
